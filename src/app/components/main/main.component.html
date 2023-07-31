@@ -4,16 +4,19 @@
       class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2 p-3"
       *ngFor="let item of product"
     >
-      <div class="card h-100 border border-dark">
-        <img [src]="item.images[0]" class="card-img-top" alt="..." />
-        <div class="card-body">
+      <div class="card h-100 border border-dark p-1">
+        <img [src]="item.images[0]" class="card-img-top h-50" alt="..." />
+        <div class="card-body h-50">
           <h5 class="card-title">{{item.title}}</h5>
           <p class="card-text">{{item.description}}</p>
           <p class="card-text">{{item.price}}$</p>
-          <a href="#" class="btn btn-danger">Elimina</a>
+          <!-- <a href="#" class="btn btn-danger" (click)="elimina(item.id)"
+            >Elimina</a
+          > -->
           <a href="#" class="btn btn-primary">Aggiungi a preferiti</a>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- (click)="generate(1) -->

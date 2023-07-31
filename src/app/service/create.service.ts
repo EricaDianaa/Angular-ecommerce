@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { productor } from "./interface";
+import { productor } from "../interface";
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
@@ -14,5 +14,14 @@ export class CreateService {
   //CHIAMATA HTTP GET
   getAll(): Observable<productor> {
     return this.http.get<productor>(this.url);
+  }
+
+  //CHIAMATA HTTP DELETE
+  delete(id: number): Observable<productor> {
+    return this.http.delete<productor>(this.url + "/" + id);
+  }
+  //CHIAMATA HTTP GET
+  get(id: number): Observable<productor> {
+    return this.http.get<productor>(this.url + id);
   }
 }

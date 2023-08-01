@@ -1,22 +1,20 @@
-<div class="container-fluid">
-  <div class="row">
-    <div
-      class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2 p-3"
-      *ngFor="let item of product"
-    >
-      <div class="card h-100 border border-dark p-1">
-        <img [src]="item.images[0]" class="card-img-top h-50" alt="..." />
-        <div class="card-body h-50">
-          <h5 class="card-title">{{item.title}}</h5>
-          <p class="card-text">{{item.description}}</p>
-          <p class="card-text">{{item.price}}$</p>
-          <!-- <a href="#" class="btn btn-danger" (click)="elimina(item.id)"
-            >Elimina</a
-          > -->
-          <a href="#" class="btn btn-primary">Aggiungi a preferiti</a>
-        </div>
-      </div>
+<div class="card h-100">
+  <img
+    src="{{ product.thumbnail }}"
+    class="card-img-top"
+    alt="{{ product.id }}"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text">{{ product.description | cutText }}</p>
+    <div class="d-flex justify-content-between">
+      <button
+        (click)="addToPrefe(product)"
+        [disabled]="isFav(product.id)"
+        class="btn btn-primary"
+      >
+        Aggiungi ai preferiti
+      </button>
     </div>
   </div>
 </div>
-<!-- (click)="generate(1) -->

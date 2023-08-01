@@ -8,17 +8,18 @@ import { productor } from "src/app/interface";
   templateUrl: "./main.component.html",
   styleUrls: ["./main.component.scss"],
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   @Input() src!: string;
-  product: prod[] = [];
+  @Input() product!: prod;
+  produc: prod[] = [];
   arr: prod[] = [];
   constructor(private privateSvc: CreateService) {}
 
-  ngOnInit() {
-    this.privateSvc.getAll().subscribe((res: productor) => {
-      this.product = res.products;
-      console.log(res);
-    });
+  addToPrefe(prd: prod) {
+    this.privateSvc.addToPrefe(prd);
+  }
+  isFav(id: number) {
+    return this.privateSvc.isFav(id);
   }
 
   // generate(id: number) {

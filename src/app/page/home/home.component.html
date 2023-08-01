@@ -1,1 +1,8 @@
-<app-main></app-main>
+<!-- <app-main></app-main> -->
+<div class="d-flex">
+  <div
+    class="w-100 container-fluid d-flex flex-wrap gap-5 justify-content-evenly"
+  >
+    <app-main [product]="prod" *ngFor="let prod of products"></app-main>
+  </div>
+</div>

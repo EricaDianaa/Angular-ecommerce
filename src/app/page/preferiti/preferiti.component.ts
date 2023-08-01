@@ -1,5 +1,6 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { prod, productor } from "src/app/interface";
+import { CreateService } from "src/app/service/create.service";
 import { PreferitiService } from "src/app/service/preferiti.service";
 
 @Component({
@@ -7,16 +8,19 @@ import { PreferitiService } from "src/app/service/preferiti.service";
   templateUrl: "./preferiti.component.html",
   styleUrls: ["./preferiti.component.scss"],
 })
-export class PreferitiComponent {
+export class PreferitiComponent implements OnInit {
   @Input() src!: string;
   product: prod[] = [];
-  arr!: prod[];
-  constructor(private privateSvc: PreferitiService) {}
+  favs!: prod[];
+  constructor(private privateSvc: CreateService) {}
 
-  // generate(id: number) {
-  //   this.privateSvc.get(id).subscribe((res: productor) => {
-  //     this.arr = res.products;
-  //     console.log(res);
-  //   });
-  // }
+  ngOnInit(): void {
+    this.privateSvc.favList.subscribe((fav: prod[]) => {
+      this.favs = fav;
+      console.log(this.favs);
+    });
+  }
+  removeFromFav(id: number) {
+    this.privateSvc.removeFromFav(id);
+  }
 }
